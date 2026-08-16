@@ -1,6 +1,6 @@
 """
 Orchestrateur du pipeline ETL complet EduSmart.
-Extract -> Transform -> Load, sur les 5 sources.
+Extract -> Transform -> Load, sur les 5 sources, avec traçabilité complète.
 """
 
 import time
@@ -11,22 +11,37 @@ import extract_mongodb
 import extract_redis
 import transform
 import load
+import metadata_tracker as tracker
+
+
+SOURCES = [
+    ("postgres", extract_postgres),
+    ("mysql", extract_mysql),
+    ("csv_rh", extract_csv),
+    ("logs_mobile", extract_mongodb),
+    ("redis", extract_redis),
+]
 
 
 def run():
     start = time.time()
+    tracker.ensure_metadata_tables()
 
     print("=== ÉTAPE 1 : EXTRACTION ===")
-    print("\nSource 1 - PostgreSQL")
-    extract_postgres.extract()
-    print("\nSource 2 - MySQL")
-    extract_mysql.extract()
-    print("\nSource 3 - CSV (RH)")
-    extract_csv.extract()
-    print("\nSource 4 - Logs mobile")
-    extract_mongodb.extract()
-    print("\nSource 5 - Redis")
-    extract_redis.extract()
+    for name, module in SOURCES:
+        source_start = time.time()
+        print(f"\nSource : {name}")
+        try:
+            result = module.extract()
+            total_lignes = sum(result.values())
+            duree = round(time.time() - source_start, 2)
+            tracker.log_source_metadata(name, total_lignes, statut="succes")
+            tracker.log_execution(name, duree, total_lignes, statut="succes")
+        except Exception as e:
+            duree = round(time.time() - source_start, 2)
+            tracker.log_source_metadata(name, 0, statut="echec")
+            tracker.log_execution(name, duree, 0, erreurs=str(e), statut="echec")
+            print(f"  ERREUR sur {name} : {e}")
 
     print("\n=== ÉTAPE 2 : TRANSFORMATION ===")
     quality_report = transform.transform_all()

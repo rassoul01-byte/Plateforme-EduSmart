@@ -1,6 +1,6 @@
 # Rapport qualité — EduSmart
 
-Généré le 2026-08-15 19:37:43
+Généré le 2026-08-16 21:28:01
 
 | Table | Extraites | Rejetées | Doublons | Manquantes | Incohérences | Corrections | Finales |
 |---|---|---|---|---|---|---|---|
@@ -12,7 +12,7 @@ Généré le 2026-08-15 19:37:43
 | csv_absences | 1400 | 0 | 0 | 285 | 0 | 285 | 1400 |
 | csv_salaires | 3500 | 0 | 0 | 74 | 0 | 74 | 3500 |
 | mongo_logs_mobile | 113435 | 0 | 1155 | 154823 | 0 | 154823 | 112280 |
-| redis_notifications | 14082 | 0 | 7041 | 0 | 0 | 0 | 7041 |
+| redis_notifications | 21123 | 0 | 14082 | 0 | 0 | 0 | 7041 |
 | mysql_modules | 20 | 0 | 0 | 0 | 0 | 0 | 20 |
 | csv_enseignants | 468 | 0 | 18 | 36 | 0 | 36 | 450 |
 | redis_last_quiz | 3500 | 0 | 0 | 0 | 0 | 0 | 3500 |
@@ -22,5 +22,5 @@ Généré le 2026-08-15 19:37:43
 | mysql_notes | 45350 | 0 | 0 | 879 | 0 | 879 | 45350 |
 | csv_departements | 8 | 0 | 0 | 0 | 0 | 0 | 8 |
 | postgres_inscriptions | 18000 | 0 | 0 | 0 | 0 | 0 | 18000 |
-| redis_sessions | 2365 | 0 | 0 | 451 | 0 | 451 | 2365 |
+| redis_sessions | 4682 | 0 | 0 | 906 | 0 | 906 | 4682 |
 | postgres_classes | 220 | 0 | 0 | 0 | 0 | 0 | 220 |
