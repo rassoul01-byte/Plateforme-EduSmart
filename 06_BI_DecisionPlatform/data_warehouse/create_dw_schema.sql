@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS dim_temps (
     annee INTEGER NOT NULL,
     jour_semaine VARCHAR(15) NOT NULL
 );
-
 CREATE TABLE IF NOT EXISTS dim_etudiant (
     etudiant_key SERIAL PRIMARY KEY,
     etudiant_id INTEGER NOT NULL,
@@ -25,8 +24,13 @@ CREATE TABLE IF NOT EXISTS dim_etudiant (
     sexe VARCHAR(10),
     ville VARCHAR(100),
     date_naissance DATE,
-    date_inscription DATE
+    date_inscription DATE,
+    date_debut DATE NOT NULL DEFAULT CURRENT_DATE,
+    date_fin DATE,
+    est_actuel BOOLEAN NOT NULL DEFAULT TRUE
 );
+
+CREATE INDEX IF NOT EXISTS idx_dim_etudiant_actuel ON dim_etudiant(etudiant_id, est_actuel);
 
 CREATE TABLE IF NOT EXISTS dim_formation (
     formation_key SERIAL PRIMARY KEY,

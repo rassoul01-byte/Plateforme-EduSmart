@@ -1,6 +1,6 @@
 # Rapport qualité — EduSmart
 
-Généré le 2026-08-16 21:28:01
+Généré le 2026-08-17 07:52:44
 
 | Table | Extraites | Rejetées | Doublons | Manquantes | Incohérences | Corrections | Finales |
 |---|---|---|---|---|---|---|---|
@@ -17,7 +17,7 @@ Généré le 2026-08-16 21:28:01
 | csv_enseignants | 468 | 0 | 18 | 36 | 0 | 36 | 450 |
 | redis_last_quiz | 3500 | 0 | 0 | 0 | 0 | 0 | 3500 |
 | mysql_cours | 120 | 0 | 0 | 0 | 0 | 0 | 120 |
-| postgres_etudiants | 15150 | 0 | 0 | 5478 | 889 | 5478 | 15150 |
+| postgres_etudiants | 15150 | 0 | 0 | 5477 | 889 | 5477 | 15150 |
 | mysql_progression | 55000 | 0 | 0 | 9109 | 0 | 9109 | 55000 |
 | mysql_notes | 45350 | 0 | 0 | 879 | 0 | 879 | 45350 |
 | csv_departements | 8 | 0 | 0 | 0 | 0 | 0 | 8 |
